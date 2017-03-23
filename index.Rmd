@@ -1,0 +1,70 @@
+---
+title       : Developing Data Products, Week 4 Assignment
+subtitle    : mtcars Simple Plot (Shiny Application)
+author      : Enrico
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Shiny Application: Simple Mtcars Plot  
+
+- An extremely simple application using basic shiny  
+  -  (despite its simplicity uses a mechanism not exaplained in the lessons neither in the standard basic shiny training 
+<br /><br />
+<img style="display:block;margin-left:auto;margin-right:auto"  src="./assets/img/donaldduckcar.jpg">
+<br />  
+My Obiectives  
+- use basic mechanisms of shiny
+- do <b>NOT</b> develop statistic code
+- Simple&quick but not quick&dirty  
+
+
+--- .class #id 
+
+## Application Fuctionalities
+
+1) Displays a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.  
+Shiny GUI elements are used  
+- to select which are the two variables to plot (the y, the x)  
+  - to control details of the plot (smooth type, if any; point size)  
+<br/>
+  
+2) Allows to run some basic commands (names, ncol, mean ...)  
+  - on the whole mtcars dataframe <b>or</b>  
+  - on the selected "x" variable  
+    
+Commands output is shown as raw text
+
+--- .class #id 
+## Application Structure
+The application is structured in 3 files  
+-  The usual server.R and ui.R  
+- <b>backend.R</b>  
+
+backend.R decouples the (minimal) business logic from the GUI; it contains all and only non-GUI code.  
+This basic good practise, in a real application, would allow to test the business logic on its own, independently from the GUI
+
+
+
+--- .class #id 
+
+## Additional Remarks
+
+To keep together the plot options (managed by GUI widgets) a simple class was created, 
+```{r setup, cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE, tidy = FALSE}
+setClass("plotParsClass",
+  slots = c(regrSmoot = "character", pointSize = "numeric"))
+plotPars = new("plotParsClass")
+plotPars@pointSize <- 4 # in real app would get value from
+# input$pointSize  in turn from sliderInput("pointSize", ...)
+cat(plotPars@pointSize)
+```
+
+The debug messages printed to the web GUI and the automatic updating of the internal status message, was implemented using [reactiveValues()] (https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html) that gives to "normal" values properties similar to those of the GUI widgets, ie automatic update of the GUI (via the server) when a value is changed by the not by a GUI widget but by the programmer's code.
+
+--- .class #id
