@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products, Week 4 Assignment</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products, Week 4 Assignment">
+  <meta name="author" content="Enrico">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products, Week 4 Assignment</h1>
+    <h2>mtcars Simple Plot (Shiny Application)</h2>
+    <p>Enrico<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Shiny Application: Simple Mtcars Plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Extremely simple application using basic shiny (find it <a href="https://enrico200165.shinyapps.io/devdataprodw4/">here</a>)<br>
+
+<ul>
+<li> (despite its simplicity uses a mechanism not exaplained in the lessons neither in the standard basic shiny training 
+<br /><br />
+<img style="display:block;margin-left:auto;margin-right:auto"  src="./assets/img/donaldduckcar.jpg"><br></li>
+</ul></li>
+</ul>
+
+<p>Obiectives  </p>
+
+<ul>
+<li>use basic mechanisms of shiny</li>
+<li>do <b>NOT</b> develop statistic code</li>
+<li>Simple&amp;quick but not quick&amp;dirty<br></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Application Fuctionalities</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>1) Displays a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.<br>
+Shiny GUI elements are used  </p>
+
+<ul>
+<li>to select which are the two variables to plot (the y, the x)<br>
+
+<ul>
+<li>to control details of the plot (smooth type, if any; point size)<br>
+<br/></li>
+</ul></li>
+</ul>
+
+<p>2) Allows to run some basic commands (names, ncol, mean ...)  </p>
+
+<ul>
+<li>on the whole mtcars dataframe <b>or</b><br></li>
+<li>on the selected &quot;x&quot; variable<br></li>
+</ul>
+
+<p>Commands output is shown as raw text</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Application Structure</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The application is structured in 3 files  </p>
+
+<ul>
+<li> The usual server.R and ui.R<br></li>
+<li><b>backend.R</b><br></li>
+</ul>
+
+<p>backend.R decouples the (minimal) business logic from the GUI; it contains all and only non-GUI code.<br>
+This basic good practise, in a real application, would allow to test the business logic on its own, independently from the GUI</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Additional Remarks</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>To keep together the plot options (managed by GUI widgets) a simple class was created, </p>
+
+<pre><code class="r">setClass(&quot;plotParsClass&quot;,
+  slots = c(regrSmoot = &quot;character&quot;, pointSize = &quot;numeric&quot;))
+plotPars = new(&quot;plotParsClass&quot;)
+plotPars@pointSize &lt;- 4 # in real app would get value from
+# input$pointSize  in turn from sliderInput(&quot;pointSize&quot;, ...)
+cat(plotPars@pointSize)
+</code></pre>
+
+<p>The debug messages printed to the web GUI and the automatic updating of the internal status message, was implemented using <a href="https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html">reactiveValues()</a> that gives to &quot;normal&quot; values properties similar to those of the GUI widgets, ie automatic update of the GUI (via the server) when a value is changed by the not by a GUI widget but by the programmer&#39;s code.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Shiny Application: Simple Mtcars Plot'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Application Fuctionalities'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Application Structure'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Additional Remarks'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
