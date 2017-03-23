@@ -1,0 +1,103 @@
+---
+title       : mtcars Simple Plot Documentation
+subtitle    : 
+author      : Enrico
+output:
+  html_document: default
+  pdf_document: default
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Application Overview
+
+An extremely simple application using basic shiny features.  
+
+Despite its simplicity to update the GUI for values that are not entered via a GUI widget it uses a mechanism not explained neither in the lessons nor in the standard basic shiny training.   
+
+The obiective of the app was to used shiny's basic functionalties, not to implement something interesting in terms of statistic code, so the statistic code is minimal.
+
+The application functionalities are two:  
+1. Display a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.  
+For this shiny GUI elements are used  
+- to select which are the two variables to plot (the y, the x)  
+  - to control details of the plot (smooth type, if any; point size)  
+
+
+2. Run some basic commands (names, ncol, mean ...)  
+
+  - on the whole mtcars dataframe <b>or</b>  
+  - on the selected "x" variable  
+    
+Commands output is shown as raw text
+
+## Functionality: mtcars Scatterplot
+From a listbox the user chooses which variable of mtcars will have the role of "y"
+
+![](assets/img/app_yvarsel.jpg)
+
+In the same way in the listbox below the user chooses which variable will have the role of "x"
+
+![](assets/img/app_xvarsel.jpg)
+
+
+## Running Basic Statistic Functions  
+
+The user can run basic functionalities choosing them from a listbox, they are divided in two groups:  
+- commands on the whole dataframe  
+- commands on a single variable (the current "x" variable)  
+
+![](assets/img/app_commands_gui.jpg)
+
+
+The output of these functions is shown in raw text on the bottom right, below the plots, where there are 3 types of text:  
+- these functions output  
+- internan diagnostic info about the state of the application (currently which are the x and y vars)  
+- the last debug message ouput by programmer's code  
+
+![](assets/img/app_text_output.jpg)
+
+
+## Some internal details  
+
+### Code Structure
+The application is structured in 3 files  
+-  The standard server.R and ui.R prescribed by shiny  
+- <b>backend.R</b>  
+
+backend.R decouples the (minimal) business logic from the GUI; it contains all and only non-GUI code.  
+This basic good practise, in a real application, would allow to test the business logic on its own, independently from the GUI
+
+
+### reactiveValues()  
+
+The debug messages printed to the web GUI and the automatic updating of the internal status message, was implemented using [reactiveValues()] (https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html) that gives to "normal" values properties similar to those of the GUI widgets, ie automatic update of the GUI (via the server) when a value is changed by the programmer's code (rather than by a GUI widget).
+
+
+```{r sampleCodeReactive, eval=FALSE}
+
+# creating the "reactive" variable (a list used similarly to)
+# server.R's anonoymous function's input and output
+values <<- reactiveValues()
+
+# in server.R anonymous function
+output$traceOut <- renderText({
+  paste("Internal/debug msg:",values$msg)
+})
+
+```
+
+
+### Basic Classes/Objects in R  
+
+To keep together the plot options (managed by GUI widgets) a simple class was created, 
+```{r sampleCode, cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE, tidy = FALSE}
+setClass("plotParsClass",
+  slots = c(regrSmoot = "character", pointSize = "numeric"))
+plotPars = new("plotParsClass")
+plotPars@pointSize <- 4 # in real app would get value from
+# input$pointSize  in turn from sliderInput("pointSize", ...)
+cat(plotPars@pointSize)
+```
+
