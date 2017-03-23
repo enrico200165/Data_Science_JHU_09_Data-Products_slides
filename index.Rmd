@@ -7,18 +7,18 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+mode        : selfcontained # {selfcontained, standalone, draft}
 knit        : slidify::knit2slides
 ---
 
 ## Shiny Application: Simple Mtcars Plot  
 
-- An extremely simple application using basic shiny  
+- Extremely simple application using basic shiny (find it [here](https://enrico200165.shinyapps.io/devdataprodw4/), user doc [here](file:///V:/data/learn/02_JHU_DSci/09_data-products/04_course-project/slidify_prj/appdocumentation.html))  
   -  (despite its simplicity uses a mechanism not exaplained in the lessons neither in the standard basic shiny training 
 <br /><br />
-<img style="display:block;margin-left:auto;margin-right:auto"  src="./assets/img/donaldduckcar.jpg">
-<br />  
-My Obiectives  
+<img style="display:block;margin-left:auto;margin-right:auto"  src="./assets/img/donaldduckcar.jpg">  
+
+Obiectives  
 - use basic mechanisms of shiny
 - do <b>NOT</b> develop statistic code
 - Simple&quick but not quick&dirty  
@@ -56,7 +56,7 @@ This basic good practise, in a real application, would allow to test the busines
 ## Additional Remarks
 
 To keep together the plot options (managed by GUI widgets) a simple class was created, 
-```{r setup, cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE, tidy = FALSE}
+```{r setup, eval = FALSE, echo = TRUE, message = FALSE, warning = FALSE, tidy = FALSE}
 setClass("plotParsClass",
   slots = c(regrSmoot = "character", pointSize = "numeric"))
 plotPars = new("plotParsClass")
