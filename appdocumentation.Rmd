@@ -12,25 +12,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Application Overview
 
-An extremely simple application using basic shiny features.  
+An application whose main goal is to learn and practise Shiny basic features useful in real applications, even if not taught in the course (ex. logging a diagnostic message to Web GUI, automatically updating an internal status diagnostic on the Web GUI).  
 
-Despite its simplicity to update the GUI for values that are not entered via a GUI widget it uses a mechanism not explained neither in the lessons nor in the standard basic shiny training.   
+The types of application functionalities are two:  
 
-The obiective of the app was to used shiny's basic functionalties, not to implement something interesting in terms of statistic code, so the statistic code is minimal.
-
-The application functionalities are two:  
-1. Display a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.  
-For this shiny GUI elements are used  
-- to select which are the two variables to plot (the y, the x)  
-  - to control details of the plot (smooth type, if any; point size)  
-
-
-2. Run some basic commands (names, ncol, mean ...)  
-
+**Run some statistic functions** (names, ncol, mean ...)  
   - on the whole mtcars dataframe <b>or</b>  
   - on the selected "x" variable  
-    
-Commands output is shown as raw text
+  Commands output is shown as raw text  
+
+**Display a scatterplot** of mtcars data set, for any couple of **variables chosen by the user**.  
+For this shiny GUI elements are used  
+- to select which are the two variables to plot (the y, the x)  
+- to control details of the plot (smooth type, if any; point size)  
+
 
 ## Functionality: mtcars Scatterplot
 From a listbox the user chooses which variable of mtcars will have the role of "y"
@@ -42,7 +37,7 @@ In the same way in the listbox below the user chooses which variable will have t
 ![](assets/img/app_xvarsel.jpg)
 
 
-## Running Basic Statistic Functions  
+## Running Statistic Functions  
 
 The user can run basic functionalities choosing them from a listbox, they are divided in two groups:  
 - commands on the whole dataframe  

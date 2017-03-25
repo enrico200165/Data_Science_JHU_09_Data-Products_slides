@@ -124,23 +124,16 @@ $(document).ready(function () {
 
 <div id="application-overview" class="section level2">
 <h2>Application Overview</h2>
-<p>An extremely simple application using basic shiny features.</p>
-<p>Despite its simplicity to update the GUI for values that are not entered via a GUI widget it uses a mechanism not explained neither in the lessons nor in the standard basic shiny training.</p>
-<p>The obiective of the app was to used shiny’s basic functionalties, not to implement something interesting in terms of statistic code, so the statistic code is minimal.</p>
-<p>The application functionalities are two:<br />
-1. Display a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.<br />
+<p>An application whose main goal is to learn and practise Shiny basic features useful in real applications, even if not taught in the course (ex. logging a diagnostic message to Web GUI, automatically updating an internal status diagnostic on the Web GUI).</p>
+<p>The types of application functionalities are two:</p>
+<p><strong>Run some statistic functions</strong> (names, ncol, mean …)<br />
+- on the whole mtcars dataframe <b>or</b><br />
+- on the selected “x” variable<br />
+Commands output is shown as raw text</p>
+<p><strong>Display a scatterplot</strong> of mtcars data set, for any couple of <strong>variables chosen by the user</strong>.<br />
 For this shiny GUI elements are used<br />
 - to select which are the two variables to plot (the y, the x)<br />
 - to control details of the plot (smooth type, if any; point size)</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Run some basic commands (names, ncol, mean …)</li>
-</ol>
-<ul>
-<li>on the whole mtcars dataframe <b>or</b><br />
-</li>
-<li>on the selected “x” variable</li>
-</ul>
-<p>Commands output is shown as raw text</p>
 </div>
 <div id="functionality-mtcars-scatterplot" class="section level2">
 <h2>Functionality: mtcars Scatterplot</h2>
@@ -155,8 +148,8 @@ For this shiny GUI elements are used<br />
 
 </div>
 </div>
-<div id="running-basic-statistic-functions" class="section level2">
-<h2>Running Basic Statistic Functions</h2>
+<div id="running-statistic-functions" class="section level2">
+<h2>Running Statistic Functions</h2>
 <p>The user can run basic functionalities choosing them from a listbox, they are divided in two groups:<br />
 - commands on the whole dataframe<br />
 - commands on a single variable (the current “x” variable)</p>
