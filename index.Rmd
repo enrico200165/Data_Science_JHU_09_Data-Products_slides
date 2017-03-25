@@ -13,32 +13,30 @@ knit        : slidify::knit2slides
 
 ## Shiny Application: Simple Mtcars Plot  
 
-- Extremely simple application using basic shiny (find it [here](https://enrico200165.shinyapps.io/devdataprodw4/), user doc [here](file:///V:/data/learn/02_JHU_DSci/09_data-products/04_course-project/slidify_prj/appdocumentation.html))  
-  -  (despite its simplicity uses a mechanism not exaplained in the lessons neither in the standard basic shiny training 
-<br /><br />
-<img style="display:block;margin-left:auto;margin-right:auto"  src="./assets/img/donaldduckcar.jpg">  
+Obiectives of the application  
+- Practise the mechanisms of shiny useful in real applications, even if not taught in the course  
+  - *ex. update Web GUI when user code, rather than a widget, changes a value*  
+- Be simple, easy to understand for users/reviewers, use few resourses  
+- Focus on learning&practising Shiny mechanisms.  
+So instead of building a nice looking practically useful app with many widgets but performing a **single** hardcoded computation (ex depression test, calculating an index) I built and app performing different  statistical functions that allows to choose to which variables apply them (simple functions, it's an exercise after all)  
+- Apply the points above in an application for which time availble is relatively short
 
-Obiectives  
-- use basic mechanisms of shiny
-- do <b>NOT</b> develop statistic code
-- Simple&quick but not quick&dirty  
+The application is [here](https://enrico200165.shinyapps.io/devdataprodw4/), the user doc is [here](file:///V:/data/learn/02_JHU_DSci/09_data-products/04_course-project/slidify_prj/appdocumentation.html)  
 
 
 --- .class #id 
 
 ## Application Fuctionalities
+<br />
+Allows to run statistical functions (names, ncol, mean ...)  
+  - on whole dataframe <b>or</b>  
+  - on the variable chosen by the user as the "x" variable  
 
-1) Displays a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.  
+<br />
+Displays a scatterplot of <b>mtcars</b> data set, for any couple of variables **chosen by the user**.  
 Shiny GUI elements are used  
 - to select which are the two variables to plot (the y, the x)  
-  - to control details of the plot (smooth type, if any; point size)  
-<br/>
-  
-2) Allows to run some basic commands (names, ncol, mean ...)  
-  - on the whole mtcars dataframe <b>or</b>  
-  - on the selected "x" variable  
-    
-Commands output is shown as raw text
+- to control details of the plot (smooth type, if any; point size)  
 
 --- .class #id 
 ## Application Structure
@@ -63,8 +61,9 @@ plotPars = new("plotParsClass")
 plotPars@pointSize <- 4 # in real app would get value from
 # input$pointSize  in turn from sliderInput("pointSize", ...)
 cat(plotPars@pointSize)
-```
-
+```  
+  
+<br />  
 The debug messages printed to the web GUI and the automatic updating of the internal status message, was implemented using [reactiveValues()] (https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html) that gives to "normal" values properties similar to those of the GUI widgets, ie automatic update of the GUI (via the server) when a value is changed by the not by a GUI widget but by the programmer's code.
 
 --- .class #id

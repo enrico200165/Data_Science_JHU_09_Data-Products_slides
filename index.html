@@ -46,23 +46,21 @@
     <h2>Shiny Application: Simple Mtcars Plot</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Extremely simple application using basic shiny (find it <a href="https://enrico200165.shinyapps.io/devdataprodw4/">here</a>, user doc <a href="file:///V:/data/learn/02_JHU_DSci/09_data-products/04_course-project/slidify_prj/appdocumentation.html">here</a>)<br>
+    <p>Obiectives of the application  </p>
 
 <ul>
-<li> (despite its simplicity uses a mechanism not exaplained in the lessons neither in the standard basic shiny training 
-<br /><br />
-<img style="display:block;margin-left:auto;margin-right:auto"  src="./assets/img/donaldduckcar.jpg"><br></li>
+<li>Practise the mechanisms of shiny useful in real applications, even if not taught in the course<br>
+
+<ul>
+<li><em>ex. update Web GUI when user code, rather than a widget, changes a value</em><br></li>
 </ul></li>
+<li>Be simple, easy to understand for users/reviewers, use few resourses<br></li>
+<li>Focus on learning&amp;practising Shiny mechanisms.<br>
+So instead of building a nice looking practically useful app with many widgets but performing a <strong>single</strong> hardcoded computation (ex depression test, calculating an index) I built and app performing different  statistical functions that allows to choose to which variables apply them (simple functions, it&#39;s an exercise after all)<br></li>
+<li>Apply the points above in an application for which time availble is relatively short</li>
 </ul>
 
-<p>Obiectives  </p>
-
-<ul>
-<li>use basic mechanisms of shiny</li>
-<li>do <b>NOT</b> develop statistic code</li>
-<li>Simple&amp;quick but not quick&amp;dirty<br></li>
-</ul>
+<p>The application is <a href="https://enrico200165.shinyapps.io/devdataprodw4/">here</a>, the user doc is <a href="file:///V:/data/learn/02_JHU_DSci/09_data-products/04_course-project/slidify_prj/appdocumentation.html">here</a>  </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -73,26 +71,22 @@
     <h2>Application Fuctionalities</h2>
   </hgroup>
   <article data-timings="">
-    <p>1) Displays a scatterplot of <b>mtcars</b> data set, for any couple of variable chosen by the user.<br>
+    <p><br />
+Allows to run statistical functions (names, ncol, mean ...)  </p>
+
+<ul>
+<li>on whole dataframe <b>or</b><br></li>
+<li>on the variable chosen by the user as the &quot;x&quot; variable<br></li>
+</ul>
+
+<p><br />
+Displays a scatterplot of <b>mtcars</b> data set, for any couple of variables <strong>chosen by the user</strong>.<br>
 Shiny GUI elements are used  </p>
 
 <ul>
-<li>to select which are the two variables to plot (the y, the x)<br>
-
-<ul>
-<li>to control details of the plot (smooth type, if any; point size)<br>
-<br/></li>
-</ul></li>
+<li>to select which are the two variables to plot (the y, the x)<br></li>
+<li>to control details of the plot (smooth type, if any; point size)<br></li>
 </ul>
-
-<p>2) Allows to run some basic commands (names, ncol, mean ...)  </p>
-
-<ul>
-<li>on the whole mtcars dataframe <b>or</b><br></li>
-<li>on the selected &quot;x&quot; variable<br></li>
-</ul>
-
-<p>Commands output is shown as raw text</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -132,7 +126,8 @@ plotPars@pointSize &lt;- 4 # in real app would get value from
 cat(plotPars@pointSize)
 </code></pre>
 
-<p>The debug messages printed to the web GUI and the automatic updating of the internal status message, was implemented using <a href="https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html">reactiveValues()</a> that gives to &quot;normal&quot; values properties similar to those of the GUI widgets, ie automatic update of the GUI (via the server) when a value is changed by the not by a GUI widget but by the programmer&#39;s code.</p>
+<p><br /><br>
+The debug messages printed to the web GUI and the automatic updating of the internal status message, was implemented using <a href="https://shiny.rstudio.com/reference/shiny/latest/reactiveValues.html">reactiveValues()</a> that gives to &quot;normal&quot; values properties similar to those of the GUI widgets, ie automatic update of the GUI (via the server) when a value is changed by the not by a GUI widget but by the programmer&#39;s code.</p>
 
   </article>
   <!-- Presenter Notes -->
