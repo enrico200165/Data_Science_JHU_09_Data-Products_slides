@@ -1,5 +1,5 @@
 ---
-title       : mtcars Simple Plot Documentation
+title       : Shiny App Documentation
 subtitle    : 
 author      : Enrico
 output:
@@ -27,7 +27,23 @@ For this shiny GUI elements are used
 - to control details of the plot (smooth type, if any; point size)  
 
 
-## Functionality: mtcars Scatterplot
+## Functionality: Running Statistic Functions  
+
+The user can run basic functionalities choosing them from a listbox, they are divided in two groups:  
+- commands on the whole dataframe  
+- commands on a single variable (the current "x" variable)  
+
+![](assets/img/app_commands_gui.jpg)
+
+The output of these functions is shown in raw text on the bottom right, below the plots, where there are 3 types of text:  
+- these functions output  
+- internan diagnostic info about the state of the application (currently which are the x and y vars)  
+- the last debug message ouput by programmer's code  
+
+![](assets/img/app_text_output.jpg)
+
+
+## Functionality: Scatterplot
 From a listbox the user chooses which variable of mtcars will have the role of "y"
 
 ![](assets/img/app_yvarsel.jpg)
@@ -36,22 +52,6 @@ In the same way in the listbox below the user chooses which variable will have t
 
 ![](assets/img/app_xvarsel.jpg)
 
-
-## Running Statistic Functions  
-
-The user can run basic functionalities choosing them from a listbox, they are divided in two groups:  
-- commands on the whole dataframe  
-- commands on a single variable (the current "x" variable)  
-
-![](assets/img/app_commands_gui.jpg)
-
-
-The output of these functions is shown in raw text on the bottom right, below the plots, where there are 3 types of text:  
-- these functions output  
-- internan diagnostic info about the state of the application (currently which are the x and y vars)  
-- the last debug message ouput by programmer's code  
-
-![](assets/img/app_text_output.jpg)
 
 
 ## Some internal details  
