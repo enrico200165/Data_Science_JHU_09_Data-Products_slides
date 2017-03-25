@@ -21,7 +21,7 @@ Obiectives of the application
 So instead of building a nice looking practically useful app with many widgets but performing a **single** hardcoded computation (ex depression test, calculating an index) I built and app performing different  statistical functions that allows to choose to which variables apply them (simple functions, it's an exercise after all)  
 - Apply the points above in an application for which time availble is relatively short
 
-The application is [here](https://enrico200165.shinyapps.io/devdataprodw4/), the user doc is [here](http://enrico200165.github.io/dataproductsslides/appdocumentation.html)  
+The application is [here](https://enrico200165.shinyapps.io/devdataprodw4/), the user doc is [here](https://enrico200165.shinyapps.io/appdocumentation/)  
 
 
 --- .class #id 
