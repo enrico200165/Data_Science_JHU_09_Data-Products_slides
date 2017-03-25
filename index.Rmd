@@ -1,6 +1,6 @@
 ---
 title       : Developing Data Products, Week 4 Assignment
-subtitle    : mtcars Simple Plot (Shiny Application)
+subtitle    : Shiny Application
 author      : Enrico
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -11,7 +11,7 @@ mode        : selfcontained # {selfcontained, standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Shiny Application: Simple Mtcars Plot  
+## Shiny Application: Objectives  
 
 Obiectives of the application  
 - Practise the mechanisms of shiny useful in real applications, even if not taught in the course  
@@ -21,7 +21,7 @@ Obiectives of the application
 So instead of building a nice looking practically useful app with many widgets but performing a **single** hardcoded computation (ex depression test, calculating an index) I built and app performing different  statistical functions that allows to choose to which variables apply them (simple functions, it's an exercise after all)  
 - Apply the points above in an application for which time availble is relatively short
 
-The application is [here](https://enrico200165.shinyapps.io/devdataprodw4/), the user doc is [here](file:///V:/data/learn/02_JHU_DSci/09_data-products/04_course-project/slidify_prj/appdocumentation.html)  
+The application is [here](https://enrico200165.shinyapps.io/devdataprodw4/), the user doc is [here](http://enrico200165.github.io/dataproductsslides/appdocumentation.html)  
 
 
 --- .class #id 
